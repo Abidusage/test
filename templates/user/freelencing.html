@@ -1,0 +1,30 @@
+{% extends 'parties/base.html' %}
+{% block title %}freelancers {% endblock %}
+{% block contenu %}
+<div class="container mt-5">
+  <div class="row mb-4">
+    {% for worker in workers %}
+    <div class="col-md-4 mt-3">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col flex-column position-static md-4">
+          <div class="col-md-4">
+            <img style="border-radius: 60%;" class="img-thumbnail h-md-250 offset-md-11 mt-3 " src="{{ worker.profile.photo.url }}" alt="ima">
+          </div>
+        
+          <h4 class="d-inline-block mb-2 text-success">{{worker.username}} </h4>
+          <h6 class="mb-0">{{ worker.profile.technologie}}</h6>
+          <hr>
+          <p class="mb-auto">{{worker.profile.apropos}}</p>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-whatsapp"></i>
+          <i class="fa-brands fa-twitter"></i>
+          <a href="{% url 'voir_plus' worker.id %}" class="btn btn-primary btn-sm">See more</a>
+        </div>
+       
+      </div>
+      
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

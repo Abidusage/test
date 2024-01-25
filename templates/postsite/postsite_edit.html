@@ -1,0 +1,18 @@
+{% extends 'parties/base.html' %}
+{% block title %}ajouter {% endblock %}
+{% load crispy_forms_filters %}
+{% block contenu %}
+    <div class="container">
+        <div class="row mt-5 pt-3">
+            <div class="col-md-8 offset-md-2">
+                <div class="card-body">
+                    <form method="POST">
+                        {%csrf_token%}
+                        {{form|crispy}}
+                        <input type="submit" value="save" class="btn btn-primary btn-sm">
+                    </form>
+                </div>
+            </div> 
+        </div>
+    </div>
+{%endblock%}

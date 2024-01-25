@@ -1,0 +1,13 @@
+.login{
+    background: url('/media/Freelancer.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.Register{
+    background: url('/media/cool3.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}

@@ -1,0 +1,40 @@
+{% extends 'parties/base.html' %}
+{% block title %}ajouter {% endblock %}
+{% load crispy_forms_filters %}
+{% block contenu %}
+
+    <div class="container">
+        <div class="row mt-5 pt-3">
+            {% if user.is_authenticated and user.is_superuser%}
+            <div class="col-md-4">
+                <form method="post">
+                    {%csrf_token%}
+                    {{form|crispy}}
+                    <input type="submit" value="Save" class="btn btn-primary btn-block">
+                </form>
+            </div>
+            {% endif %}
+            <div class="col-md-7">
+                {% for posts in posts %}
+                <div class="card shadow my-2">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img class="img-thumbnail" style="border-radius: 100%;"  src="{{posts.author.profile.photo.url}}" alt="img">
+                            </div>
+                            <div class="col-md-8">
+                                <a href="{% url 'postsite_detail' posts.id %}">{{posts.title}}</a>
+                                <hr>
+                                    <p> {{posts.content}} </p>
+                                <a href="">{{posts.date_created}}</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{%endblock%}

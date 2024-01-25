@@ -1,0 +1,91 @@
+{% extends 'parties/base.html' %}
+{% load crispy_forms_filters %}
+{% block title %}ajouter {% endblock %}
+{% block contenu %}
+<br><br><br>
+<div class="container">
+  <div class="col-md-4">
+    <a href="{% url 'utilisateur' %}" class="text-decoration-none tex-dark">
+      <div class="card my-card shadow text-center p-3  border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <p>
+          utilisateur
+          <i class="fa-solid fa-users"></i>
+        </p>
+        <h3>4</h3>
+
+      </div>
+    </a>
+  </div>
+
+  <div class="col-md-4">
+    <a href="{% url 'ajouter' %}" class="text-decoration-none tex-dark">
+      <div class="card my-card shadow text-center p-3  border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <p>
+          ressource
+          <i class="fa-solid fa-school"></i>
+        </p>
+        <h3>{{items_count}}</h3>
+
+      </div>
+    </a>
+  </div>
+<div class="container">
+  <hr>
+  <h4>ajouter un produits</h4>
+  <hr>
+  {% for message in messages %}
+  {% if message %}
+  <div class="alert alert">
+      {{message}}
+  </div>
+
+  {% endif%}
+{% endfor%}
+  <form method="POST">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input type="submit" class="btn btn-primary btn-block" value="ajouter un ressource">
+  </form>
+  <hr>
+</div>
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-striped
+      table-hover	
+      table-borderless
+      table-primary
+      align-middle">
+        <thead class="table-light">
+          <caption></caption>
+          <tr>
+            <th>Formtion</th>
+            <th>langue</th>
+            <th>description</th>
+            <th>lien</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr class="table-primary" >
+              {% for items in items%}
+              <td scope="row">{{items.formation}}</td>
+              <td>{{items.langue}}</td>
+              <td>{{items.description}}</td>
+              <td>{{items.liens}}</td>
+              <td>
+                <a href="{% url 'update_ressource' items.id%}" class="btn btn-primary btn-block"><i class="fa-solid fa-pen-to-square"></i></a><br>
+                <a href="{% url 'delete_ressource' items.id%}" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+              </td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+          <tfoot>
+            
+          </tfoot>
+      </table>
+    </div>
+    
+  </div>
+  
+  </div>
+{% endblock %}

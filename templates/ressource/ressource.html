@@ -1,0 +1,25 @@
+{% extends 'parties/base.html' %}
+{% block title %}ressource {% endblock %}
+{% block contenu %}
+<br><br>
+<div class="container">
+  <div class="row mt-5">
+    {% for item in items %}
+    <div class="col-md-4 mx-1">
+      <div class="row g-0 border rounded flex-md-row mb-4 shadow-sm h-md-250 ">
+        <div class="col-md-12">
+
+          <h3 class="mb-0"><b>{{item.formation}}</b></h3>
+          <strong class="d-inline-block mb-2 text-success">{{item.langue}} </strong>
+          <div class="mb-1 text-muted"></div>
+          <h1></h1>
+          <p class="mb-auto">{{item.description}}</p>
+          <a href="{% url 'freelencing' %}" class="stretched-link">{{item.liens}}</a>
+        </div>
+      </div>
+      
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

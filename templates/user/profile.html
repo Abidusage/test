@@ -1,0 +1,92 @@
+{% extends 'parties/base.html' %}
+{% block title %}profile{% endblock %}
+
+{% block contenu %}
+    <div class="container">
+        <div class="row mt-5 pt-2">
+          <div class="col-md-4">
+         
+          </div>
+
+          <div class="col-md-8">
+            <div class="card shadow my-2">
+              {% for message in messages %}
+              {% if message %}
+              <div class="alert alert-primary{{message.tag}}">
+                  {{message}}
+              </div>
+              {% endif%}
+          {% endfor%}
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img class="img-thumbnail" src="{{ user.profile.photo.url }}" alt="">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="col-md-8">
+                        <span class="h4">Profile information </span><a class="btn btn-primary" href="{% url 'profile_update' %}">Edit</a>
+                    </div>
+                    <hr>
+                    <div class="card-group">
+                        <div class="card">
+                            <div class="card-body">
+                              <a href="">
+                                <h6 class="card-title">Email</h6>
+                                <p class="card-text">{{user.email}}</p>
+                              </a>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Numéro WhatsApp</h6>
+                                <p class="card-text">{{ user.profile.whatsApp}}</p>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Adresse Local</h6>
+                                <p class="card-text">{{ user.profile.addresse}}</p>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Technologie Utiliser</h6>
+                                <p class="card-text">{{ user.profile.technologie}}</p>
+                            </div>
+                            <div class="card-body">
+                              <a href="">
+                                <h6 class="card-title">Adresse Facebook</h6>
+                                <p class="card-text">{{ user.profile.lien_facebook}}</p>
+                              </a>
+                            </div>
+                            
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                              <a href="">
+                                <h6 class="card-title">Github Adresse</h6>
+                                <p class="card-text">{{ user.profile.lien_github}}</p>
+                              </a>
+                            </div>
+                            <div class="card-body">
+                              <a href="">
+                              <h6 class="card-title">Upwork</h6>
+                              <p class="card-text">{{ user.profile.upwork}}</p>
+                            </a>
+                          </div>
+                            <div class="card-body">
+                              <a href="">
+                                <h6 class="card-title">Discord Adresse</h6>
+                                <p class="card-text">{{ user.profile.discord}}</p>
+                              </a>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">Description de l'Utilisateur</h6>
+                                <p class="card-text">{{ user.profile.apropos}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+{% endblock %}

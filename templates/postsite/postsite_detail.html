@@ -1,0 +1,50 @@
+{% extends 'parties/base.html' %}
+{% block title %}ajouter {% endblock %}
+{% load crispy_forms_filters %}
+{% block contenu %}
+    <div class="container">
+        <div class="row mt-5 pt-3">
+            <div class="col-md-8 offset-md-2">
+                <div class="card my-3 shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img class="img-thumbnail" style="border-radius: 100%;"  src="{{posts.author.profile.photo.url}}" alt="img">
+                            </div>
+                            <div class="col-md-8">
+                                <small class="h5"> {{posts.title}} </small>
+                                <hr>
+                                <p> {{posts.content}} </p>
+                                <p class="mt-2">
+                                    <a class="text-bleu" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                       Comment : {{ posts.comment_count}}
+                                    </a>
+                                </p>
+                                <div class="collapse" id="collapseExample">
+                                   <div class="card card-body"style="height: 250px; overflow-y: scroll;">
+                                    {% for comment in posts.comments %}
+                                    <p class="text-justify">
+                                       {{comment.content}}
+                                    </p>
+                                    {% endfor %}
+                                   </div>
+                                </div>
+                                <form method="POST">
+                                    {% csrf_token  %}
+                                    {{c_form}}
+                                    <input type="submit" value="comment" class="btn btn-primary btn-sm">
+                                </form>
+                                <hr>
+                                <small class="h5"> {{posts.date_created}} </small>
+                                {% if posts.author == request.user%}
+                                <span> <a href="{% url 'postsite_edit' posts.id %}" class="btn btn-primary btn-sm float-right mx-2">Edit</a></span>
+                                <span> <a href="{% url 'postsite_delete' posts.id %}" class="btn btn-danger btn-sm float-right mx-2">Delete</a></span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}

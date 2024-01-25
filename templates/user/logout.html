@@ -1,0 +1,20 @@
+ú{% extends 'parties/base.html' %}
+{% block title %}Logout {% endblock %}
+
+{% block contenu %}
+    <div class="container">
+        <div class="row mt-5 pt-3">
+            <div class="col-md-6 offset-md-3">
+                <div class="card my-3 shadow">
+                    <div class="card-body">
+                        <h4 class="offset-md-4">Logout Page</h4>
+                        <div class="alert alert-info">
+                            Your have been loog out
+                        </div>
+                        <a class="btn btn-primary btn-block " href="{% url 'login' %}">login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}

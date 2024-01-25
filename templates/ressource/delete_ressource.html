@@ -1,0 +1,23 @@
+{% extends 'parties/base.html' %}
+{% block title %}suprimer un ressource {% endblock %}
+{% block contenu %}
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-6 offset-md-3">
+                <div class="border bg-white p-3">
+                    <h3>delete ressource</h3>
+                    <hr>
+                    <div class="alert alert-danger">
+                        <h4>voulez-vous supprimer vraiment le ressource?</h4>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <a class="btn btn-secondary" href="{% url 'ajouter' %}">Anuller</a>
+                        <input type="submit" class="btn btn-danger" value="confirmer">
+                    </form>
+                </div>
+            </div> 
+        </div>
+    </div>
+{%endblock%}

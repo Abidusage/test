@@ -1,0 +1,86 @@
+{% extends 'parties/base.html' %}
+{% block title %}freelencing {% endblock %}
+{% block contenu %}
+<div class="container">
+    <div class="row mt-5 pt-2">
+      <div class="col-md-4">
+     
+      </div>
+      
+      <div class="col-md-8">
+        <div class="card shadow my-2">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="img-thumbnail" src="{{ workers.profile.photo.url }}" alt="">
+              </div>
+              <div class="col-md-8">
+                <h4>Information de  {{workers.username}}</h4><br>
+                <hr>
+                <div class="card-group">
+                    <div class="card">
+                        <div class="card-body">
+                          <i class="fa-solid fa-envelope"></i>
+                          <a href="">
+                            <h6 class="card-title">Email</h6>
+                            <p class="card-text">{{workers.email}}</p>
+                          </a>
+                        </div>
+                        
+                        <div class="card-body">
+                            <h6 class="card-title">Adresse Local</h6>
+                            <p class="card-text">{{ workers.profile.addresse}}</p>
+                        </div>
+                        <div class="card-body">
+                          <i class="fa-solid fa-microchip"></i>
+                            <h6 class="card-title">Technologie Utiliser</h6>
+                            <p class="card-text">{{ workers.profile.technologie}}</p>
+                        </div>
+                        <div class="card-body">
+                          <a href="">
+                            <i class="fa-brands fa-facebook"></i>
+                            <h6 class="card-title">Adresse Facebook</h6>
+                            <p class="card-text">{{ workers.profile.lien_facebook}}</p>
+                          </a>
+                        </div>
+                        
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                          <a href="">
+                            <i class="fa-brands fa-square-github"></i>
+                            <h6 class="card-title">Github Adresse</h6>
+                            <p class="card-text">{{ workers.profile.lien_github}}</p>
+                          </a>
+                        </div>
+                        <div class="card-body">
+                          <a href="">
+                          <i class="fa-brands fa-square-whatsapp"></i>
+                          <h6 class="card-title">Upwork</h6>
+                          <p class="card-text">{{ utilisateur.profile.upwork}}</p>
+                        </a>
+                      </div>
+                        <div class="card-body">
+                          <a href="">
+                            <h6 class="card-title">Discord Adresse</h6>
+                            <p class="card-text">{{ workers.profile.discord}}</p>
+                          </a>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">Description de l'Utilisateur</h6>
+                            <p class="card-text">{{ workers.profile.apropos}}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+{% endblock %}
